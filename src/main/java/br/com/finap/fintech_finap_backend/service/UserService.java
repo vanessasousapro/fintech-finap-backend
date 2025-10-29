@@ -44,11 +44,14 @@ public class UserService {
     }
 
     public User update(Long id, User user) {
-        Optional<User> currentUser = userRepository.findById(user.getUserId());
-        if (currentUser.isPresent()) {
-            return userRepository.save(currentUser.get());
-        } else {
-            throw new RuntimeException("user not found");
-        }
+        User currentUser = userRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("User not found"));
+
+        currentUser.setName(user.getName());
+        currentUser.setEmail(user.getEmail());
+        currentUser.setPassword(user.getPassword());
+        currentUser.setCreatedAt(user.getCreatedAt());
+
+        return userRepository.save(currentUser);
     }
 }
