@@ -2,6 +2,7 @@ package br.com.finap.fintech_finap_backend.model;
 
 import jakarta.persistence.*;
 
+import java.math.BigDecimal;
 import java.time.LocalDate;
 
 @Entity
@@ -22,7 +23,7 @@ public class GoalFinancial {
     private String goalName;
 
     @Column(name = "VALUE_TARGET", precision = 10, scale = 2, nullable = false)
-    private Double valueTarget;
+    private BigDecimal valueTarget;
 
     @Column(name = "DATE_GOAL")
     private LocalDate dateGoal;
@@ -54,11 +55,11 @@ public class GoalFinancial {
         this.goalName = goalName;
     }
 
-    public Double getValueTarget() {
+    public BigDecimal getValueTarget() {
         return valueTarget;
     }
 
-    public void setValueTarget(Double valueTarget) {
+    public void setValueTarget(BigDecimal valueTarget) {
         this.valueTarget = valueTarget;
     }
 
