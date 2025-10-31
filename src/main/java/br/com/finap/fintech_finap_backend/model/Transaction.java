@@ -10,7 +10,8 @@ import java.time.LocalDate;
 public class Transaction {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "SQ_TRANSACTION")
+    @SequenceGenerator(name = "SQ_TRANSACTION", sequenceName = "SQ_TRANSACTION", allocationSize = 1)
     @Column(name = "TRANSACTION_ID")
     private Long transactionId;
 
